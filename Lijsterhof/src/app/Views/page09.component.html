@@ -1,0 +1,15 @@
+<div>
+    <h2>{{title}}</h2>
+     
+  
+    <ul style="list-style-type: none;" class="tempTable">
+        <li *ngFor="let infoLine of nhcTable.getValue()">
+            <span class="badge">{{infoLine.name}}: </span>{{infoLine.value}}
+        </li>
+    </ul>
+
+
+
+
+
+</div>

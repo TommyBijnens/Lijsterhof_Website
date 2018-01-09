@@ -1,0 +1,19 @@
+<div style="overflow: hidden;height : 100%">
+ 
+        
+
+    <kendo-chart style="overflow: hidden;height : 100%">
+        <kendo-chart-legend position="bottom" orientation="horizontal" ></kendo-chart-legend>
+        <kendo-chart-series>
+            <kendo-chart-series-item *ngFor="let serie of graph"
+           [data]="serie.getData()" [name]="serie.name" [stack]="true" [gap]="0.2">
+            </kendo-chart-series-item>
+        </kendo-chart-series>
+    </kendo-chart>
+
+
+
+<!--  <div *ngFor="let item of tempGraph">
+    <input type="checkbox" [(ngModel)]="item.visible">{{item.name}}<br>
+</div>--> 
+</div>

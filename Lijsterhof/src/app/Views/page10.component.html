@@ -1,0 +1,31 @@
+<div>
+    <h2>{{title}}</h2>
+     
+    <table class="UITable">
+        <!--<th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Age</th>-->
+        <tr *ngFor="let nhcItem of nhcTable.getValue()">
+            <td>
+                <span class="badge">{{nhcItem.name}} </span> 
+            </td>
+            <td>
+                <div *ngIf="nhcItem.type == 1">
+                    <kendo-switch [(ngModel)]="nhcItem.value1_boolean"
+                                  (valueChange)="nhcItem.switch1()">
+                    </kendo-switch>
+                </div>
+                <div *ngIf="nhcItem.type == 2">
+                    <kendo-numerictextbox [(ngModel)]="nhcItem.value1"
+                                          [autoCorrect]="autoCorrect"
+                                          [min]="minValue"
+                                          [max]="maxValue"
+                                          [step]="textboxStep"
+                                          (valueChange)="nhcItem.change1()">
+                    </kendo-numerictextbox>
+                </div>
+            </td>
+        </tr>
+    </table>
+   
+</div>

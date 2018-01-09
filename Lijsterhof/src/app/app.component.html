@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="TopView">
+  <div class="SlideMenuBlock">
+    <cuppa-slidemenu [menulist]="menuItemsArray" [config]="config" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
+  </div>
+  <div class="TitleBlock">
+    Lijsterhof
+  </div>
+</div>
+
+
+<div class="MainView">
+ <router-outlet></router-outlet>
+
+</div>
+
+
+
+ 
+
+

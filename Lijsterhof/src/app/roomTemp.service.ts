@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 import { URLLibrary } from './url-library';
 import { ConfigurationService } from './config';
 
+import { of } from 'rxjs/observable/of';
 
 
 @Injectable()
@@ -20,20 +21,32 @@ export class RoomTempService {
     public getTemp1()
     {
         var test = this.http.get("http://192.168.0.153/");
-        return test
+return test
             .map(this.extractData)
             .catch(this.handleError);
+       //  return of("18.333")
     }
 
 
+    public getTemp2()
+    {
+        var test = this.http.get("http://192.168.0.155/");
+        return test
+            .map(this.extractData)
+            .catch(this.handleError);
+        // return of("18.3")
+    }
    
     
 
        
     private extractData(res: Response) {
        
-        let body = res.json(); //res.json();
-        return body ;
+        let body = res.json().toString(); //res.json();
+        //body = body.replace("Temperature is ","");
+        //body = body.replace("C","")
+        return parseFloat(body) ;
+        //return 18;
     }
 
 

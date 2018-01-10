@@ -38,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ChartsModule } from '@progress/kendo-angular-charts';
+import { GaugesModule } from '@progress/kendo-angular-gauges';
 
 import 'hammerjs';
 
@@ -69,7 +70,8 @@ import 'hammerjs';
     BrowserAnimationsModule,
     ButtonsModule,
     InputsModule,
-    ChartsModule
+    ChartsModule, 
+    GaugesModule
   ],
   providers: [ConfigurationService, RoomTempService],
   bootstrap: [AppComponent]

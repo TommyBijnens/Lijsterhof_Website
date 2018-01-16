@@ -10,9 +10,11 @@ import { ConfigurationService } from './config';
 
 import { of } from 'rxjs/observable/of';
 
+import {LocalProxy} from './localproxy'
 
 @Injectable()
 export class RoomTempService {
+
 
     constructor(private http: Http) {}
 
@@ -20,8 +22,9 @@ export class RoomTempService {
     
     public getTemp1()
     {
-        var test = this.http.get("http://192.168.0.153/");
-return test
+        var lp = new LocalProxy();
+        var test = lp.get(this.http,"http://192.168.0.153/")//this.http.get("http://192.168.0.153/");
+        return test
             .map(this.extractData)
             .catch(this.handleError);
        //  return of("18.333")
@@ -30,11 +33,22 @@ return test
 
     public getTemp2()
     {
-        var test = this.http.get("http://192.168.0.155/");
+        var lp = new LocalProxy();
+        var test = lp.get(this.http, "http://192.168.0.155/");
         return test
             .map(this.extractData)
             .catch(this.handleError);
         // return of("18.3")
+    }
+
+
+
+    public getTempOutdoor()
+    {
+        var test = this.http.get("http://api.openweathermap.org/data/2.5/weather?q=Mechelen&APPID=b694cc2ce9e6372989471765efe92429&units=metric");
+        return test
+        .map(this.extractOutdoorData)
+        .catch(this.handleError);
     }
    
     
@@ -47,6 +61,12 @@ return test
         //body = body.replace("C","")
         return parseFloat(body) ;
         //return 18;
+    }
+
+    private extractOutdoorData(res: Response) {
+       
+        let body = res.json();
+        return body.main;
     }
 
 

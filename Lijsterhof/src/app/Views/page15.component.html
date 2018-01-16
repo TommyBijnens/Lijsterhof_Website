@@ -33,7 +33,25 @@
                         </kendo-radialgauge-scale-ranges>
                 </kendo-radialgauge-scale>
         </kendo-radialgauge>
-        Living: {{temp2}} °C
+        Salon: {{temp2}} °C
+
+        <br>
+        <br>
+        <br>
+        <kendo-radialgauge>
+                <kendo-radialgauge-pointers>
+                        <kendo-radialgauge-pointer *ngFor="let pointer of pointers3"
+                            [value]="pointer.value" [color]="pointer.color">
+                        </kendo-radialgauge-pointer>
+                    </kendo-radialgauge-pointers>
+                <kendo-radialgauge-scale [minorUnit]=".5" [majorUnit]="5" [min]="-5" [max]="25">
+                        <kendo-radialgauge-scale-ranges>
+                            <!--    <kendo-radialgauge-scale-range [from]="15" [to]="20" color="#33cc33">
+                                </kendo-radialgauge-scale-range>-->
+                        </kendo-radialgauge-scale-ranges>
+                </kendo-radialgauge-scale>
+        </kendo-radialgauge>
+        Buiten: {{temp3}} °C
     <br>
 
 </div>

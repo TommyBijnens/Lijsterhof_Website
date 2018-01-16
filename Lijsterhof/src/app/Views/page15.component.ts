@@ -12,10 +12,11 @@ import { HttpModule } from '@angular/http';
 
     temp1: any = 10;
     temp2: any = 10;
- 
+    temp3: any = 0;
 
     public pointers1: any[];
     public pointers2: any[];
+    public pointers3: any[];
 
     constructor(private roomTempService: RoomTempService) 
     {
@@ -29,6 +30,14 @@ import { HttpModule } from '@angular/http';
           this.temp2 = result;
         this.pointers2[0].value = result;
         });
+
+        this.roomTempService.getTempOutdoor().subscribe(result => 
+          {
+          this.temp3 = result.temp;
+          this.pointers3[0].value = result.temp;
+          this.pointers3[1].value = result.temp_min;
+          this.pointers3[2].value = result.temp_max;
+          });
 
       this.pointers1 = 
       [{
@@ -53,6 +62,19 @@ import { HttpModule } from '@angular/http';
             value: 15,
             color: '#d6d6c2'
               }];
+
+              this.pointers3 = 
+              [{
+                value: 0,
+                color: '#ff0000'
+                }, {
+                value: 0,
+                color: '#d6d6c2'
+                }, {
+                value: 0,
+                color: '#d6d6c2'
+                  }];
+
 
 
      }

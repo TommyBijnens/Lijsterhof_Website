@@ -41,8 +41,10 @@ export class AppComponent {
     },
     {"title":"Video","link":"#",
     "subItems":[
-                {"title":"Oprit","link":"/page13"},
-                {"title":"Carport","link":"/page14"},
+                {"title":"Oprit Live","link":"/page13"},
+                {"title":"Oprit","link":"/page13b"},
+                {"title":"Carport Live","link":"/page14"},
+                {"title":"Carport","link":"/page14b"},
                ]
     },
 ];

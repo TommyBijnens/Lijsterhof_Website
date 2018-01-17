@@ -15,6 +15,8 @@ import { Page11Component }      from './Views/page11.component';
 import { Page12Component }      from './Views/page12.component';
 import { Page13Component }      from './Views/page13.component';
 import { Page14Component }      from './Views/page14.component';
+import { Page13bComponent }      from './Views/page13b.component';
+import { Page14bComponent }      from './Views/page14b.component';
 import { Page15Component }      from './Views/page15.component';
 
 const routes: Routes = [
@@ -34,6 +36,8 @@ const routes: Routes = [
   { path: 'page12', component: Page12Component },
   { path: 'page13', component: Page13Component },
   { path: 'page14', component: Page14Component },
+  { path: 'page13b', component: Page13bComponent },
+  { path: 'page14b', component: Page14bComponent },
   { path: 'page15', component: Page15Component },
 ];
 

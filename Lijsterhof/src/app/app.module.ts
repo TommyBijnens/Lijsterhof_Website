@@ -21,6 +21,8 @@ import { Page11Component} from './Views/page11.component';
 import { Page12Component} from './Views/page12.component';
 import { Page13Component} from './Views/page13.component';
 import { Page14Component} from './Views/page14.component';
+import { Page13bComponent} from './Views/page13b.component';
+import { Page14bComponent} from './Views/page14b.component';
 import { Page15Component} from './Views/page15.component';
 
 import { ConfigurationService } from './config';
@@ -59,7 +61,9 @@ import 'hammerjs';
     Page11Component,
     Page12Component,
     Page13Component,
+    Page13bComponent,
     Page14Component,
+    Page14bComponent,
     Page15Component,
 
   ],

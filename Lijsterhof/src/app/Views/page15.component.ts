@@ -14,9 +14,16 @@ import { HttpModule } from '@angular/http';
     temp2: any = 10;
     temp3: any = 0;
 
+    T1_H_Max: any;
+    T1_H_Min: any;
+    T1_M_Max: any;
+    T1_M_Min: any;
+
     public pointers1: any[];
     public pointers2: any[];
     public pointers3: any[];
+
+    public errorMessage: string;
 
     constructor(private roomTempService: RoomTempService) 
     {
@@ -76,10 +83,60 @@ import { HttpModule } from '@angular/http';
                   }];
 
 
+            this.roomTempService.getTemp1_H_Max_Setting().subscribe(result => 
+                    {
+                      this.T1_H_Max = result;
+                    })
+            
+            
 
      }
 
+    changeTemp1_H_max(){
 
+                    let value = this.T1_H_Max;
+                    if (!(value == null)) {
+                      let dummy: string;
+                      this.roomTempService.setTemp1_H_Max_Setting(value).subscribe(
+                          cv => dummy = cv,
+                          error => this.errorMessage = <any>error);
+                  }
+          
+                }
+                changeTemp1_H_min(){
+
+                  let value = this.T1_H_Min;
+                  if (!(value == null)) {
+                    let dummy: string;
+                    this.roomTempService.setTemp1_H_Min_Setting(value).subscribe(
+                        cv => dummy = cv,
+                        error => this.errorMessage = <any>error);
+                }
+        
+              }
+
+              changeTemp1_M_max(){
+
+                let value = this.T1_M_Max;
+                if (!(value == null)) {
+                  let dummy: string;
+                  this.roomTempService.setTemp1_M_Max_Setting(value).subscribe(
+                      cv => dummy = cv,
+                      error => this.errorMessage = <any>error);
+              }
+      
+            }
+            changeTemp1_M_min(){
+
+              let value = this.T1_M_Min;
+              if (!(value == null)) {
+                let dummy: string;
+                this.roomTempService.setTemp1_M_Min_Setting(value).subscribe(
+                    cv => dummy = cv,
+                    error => this.errorMessage = <any>error);
+            }
+    
+          }
      
 
 

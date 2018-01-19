@@ -10,7 +10,9 @@ import { ConfigurationService } from './config';
 
 import { of } from 'rxjs/observable/of';
 
-import {LocalProxy} from './localproxy'
+import {LocalProxy} from './localproxy';
+
+import{AppSettings} from'./app.config';
 
 @Injectable()
 export class RoomTempService {
@@ -23,7 +25,7 @@ export class RoomTempService {
     public getTemp1()
     {
         var lp = new LocalProxy();
-        var test = lp.get(this.http,"http://192.168.0.153/")//this.http.get("http://192.168.0.153/");
+        var test = lp.get(this.http,AppSettings.THERMOMETER01_ENDPOINT)//this.http.get("http://192.168.0.153/");
         return test
             .map(this.extractData)
             .catch(this.handleError);
@@ -34,7 +36,7 @@ export class RoomTempService {
     public getTemp2()
     {
         var lp = new LocalProxy();
-        var test = lp.get(this.http, "http://192.168.0.155/");
+        var test = lp.get(this.http, AppSettings.THERMOMETER02_ENDPOINT);
         return test
             .map(this.extractData)
             .catch(this.handleError);
@@ -51,6 +53,45 @@ export class RoomTempService {
         .catch(this.handleError);
     }
    
+    public getTemp1_H_Max_Setting()
+    {
+        var test = this.http.get(AppSettings.DATABASE_GET_T1_H_MAX_SETTING);
+        return test
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+
+    public setTemp1_H_Max_Setting(value: number)
+    {
+        var test = this.http.get(AppSettings.DATABASE_SET_T1_H_MAX_SETTING + '//'+value);
+        return test
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+
+    public setTemp1_H_Min_Setting(value: number)
+    {
+        var test = this.http.get(AppSettings.DATABASE_SET_T1_H_MIN_SETTING + '//'+value);
+        return test
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+
+    public setTemp1_M_Max_Setting(value: number)
+    {
+        var test = this.http.get(AppSettings.DATABASE_SET_T1_M_MAX_SETTING + '//'+value);
+        return test
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+
+    public setTemp1_M_Min_Setting(value: number)
+    {
+        var test = this.http.get(AppSettings.DATABASE_SET_T1_M_MIN_SETTING + '//'+value);
+        return test
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
     
 
        

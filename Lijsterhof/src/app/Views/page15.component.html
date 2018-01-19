@@ -54,4 +54,43 @@
         Buiten: {{temp3}} °C
     <br>
 
+    <table style="margin: 0px auto; ">
+        <tr>
+            <td>Hout</td>
+            <td>
+                <kendo-numerictextbox [(ngModel)]="T1_H_Max"
+                [autoCorrect]="autoCorrect"
+                [min]="0"
+                [max]="24"
+                (valueChange)="changeTemp1_H_max()"></kendo-numerictextbox>
+            </td>
+            <td>
+                <kendo-numerictextbox [(ngModel)]="T1_H_Min"
+                [autoCorrect]="autoCorrect"
+                [min]="0"
+                [max]="24"
+                (valueChange)="changeTemp1_H_min()"></kendo-numerictextbox>
+                </td>
+            
+        </tr>
+        <tr>
+                <td>Mazoutt</td>
+                <td>
+                    <kendo-numerictextbox [(ngModel)]="T1_M_Max"
+                    [autoCorrect]="autoCorrect"
+                    [min]="0"
+                    [max]="24"
+                    (valueChange)="changeTemp1_M_max()"></kendo-numerictextbox>
+                </td>
+                <td>
+                    <kendo-numerictextbox [(ngModel)]="T1_M_Min"
+                    [autoCorrect]="autoCorrect"
+                    [min]="0"
+                    [max]="24"
+                    (valueChange)="changeTemp1_M_min()"></kendo-numerictextbox>
+                    </td>
+                
+            </tr>
+    </table>    
+
 </div>

@@ -9,6 +9,7 @@ import { T_CV_H, T_CV_M, T_WW_H, T_WW_M } from '../url-library';
 import { Setup1, Setup2 } from '../url-library';
 import { NumberBoxComponent, Setup1Box, Setup2Box } from '.././UIComponents/NumberBoxComponent';
 import { DoubleSwitchComponent, SetupBS_CV, SetupBS_WW, SetupT_CV, SetupT_WW } from '.././UIComponents/DoubleSwitchComponent';
+import { Stooklijn } from '../stooklijn';
 
 @Component({
   selector: 'page02',
@@ -27,6 +28,7 @@ export class Page02Component implements OnInit {
     public CVSetupTemp1_min: number = -1;
     public CVSetupTemp1_max: number = 70;
 
+    public stookLijnen: Stooklijn[];
 
     constructor(private cvService: CVService,
         private setup1: Setup1,
@@ -42,6 +44,8 @@ export class Page02Component implements OnInit {
     {
         this.switchTable = new Array<DoubleSwitchComponent>();
         this.numberTable = new Array<NumberBoxComponent>();
+        this.stookLijnen = new Array<Stooklijn>()
+        this.stookLijnen.push(new Stooklijn());
     }
 
 

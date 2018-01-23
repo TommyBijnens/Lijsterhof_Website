@@ -20,7 +20,6 @@ export class RoomTempService {
 
     constructor(private http: Http) {}
 
-
     
     public getTemp1()
     {
@@ -53,47 +52,42 @@ export class RoomTempService {
         .catch(this.handleError);
     }
    
-    public getTemp1_H_Max_Setting()
+    public getTemp1_H_Max_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T1_H_MAX_SETTING);}
+    public getTemp1_H_Min_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T1_H_MIN_SETTING);}
+    public getTemp1_M_Max_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T1_M_MAX_SETTING);}
+    public getTemp1_M_Min_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T1_M_MIN_SETTING);}
+
+    public setTemp1_H_Max_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T1_H_MAX_SETTING, value)}
+    public setTemp1_H_Min_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T1_H_MIN_SETTING, value)}
+    public setTemp1_M_Max_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T1_M_MAX_SETTING, value)}
+    public setTemp1_M_Min_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T1_M_MIN_SETTING, value)}
+
+
+    private changeSetting(Url: string, value: number): void
     {
-        var test = this.http.get(AppSettings.DATABASE_GET_T1_H_MAX_SETTING);
+        var test = this.http.get(Url + '//'+ value);
+        var observable = test
+        .map(this.extractData)
+        .catch(this.handleError);
+
+
+        if (!(value == null)) {
+            let dummy: string;
+            let errorMessage: string;
+            observable.subscribe(
+                cv => dummy = cv,
+                error => errorMessage = <any>error);
+            }
+    }
+
+
+    private getSetting(Url: string)
+    {
+        var test = this.http.get(Url);
         return test
         .map(this.extractData)
         .catch(this.handleError);
     }
-
-    public setTemp1_H_Max_Setting(value: number)
-    {
-        var test = this.http.get(AppSettings.DATABASE_SET_T1_H_MAX_SETTING + '//'+value);
-        return test
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
-
-    public setTemp1_H_Min_Setting(value: number)
-    {
-        var test = this.http.get(AppSettings.DATABASE_SET_T1_H_MIN_SETTING + '//'+value);
-        return test
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
-
-    public setTemp1_M_Max_Setting(value: number)
-    {
-        var test = this.http.get(AppSettings.DATABASE_SET_T1_M_MAX_SETTING + '//'+value);
-        return test
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
-
-    public setTemp1_M_Min_Setting(value: number)
-    {
-        var test = this.http.get(AppSettings.DATABASE_SET_T1_M_MIN_SETTING + '//'+value);
-        return test
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
-    
-
        
     private extractData(res: Response) {
        
@@ -124,6 +118,7 @@ export class RoomTempService {
         return Observable.throw(errMsg);
     }
     
+
 
 
 

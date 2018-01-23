@@ -1,8 +1,8 @@
-<div>
+
    
-        <br>
-    
-  
+        <table style="margin: 0px auto; width:100%; height:100% ">
+     <tr>
+  <td style="width:50% ">
         <kendo-radialgauge>
                 <kendo-radialgauge-pointers>
                         <kendo-radialgauge-pointer *ngFor="let pointer of pointers1"
@@ -17,9 +17,8 @@
                 </kendo-radialgauge-scale>
         </kendo-radialgauge>
         Keuken: {{temp1}} °C
-        <br>
-        <br>
-        <br>
+    </td>
+    <td style="width:50% "> 
         <kendo-radialgauge>
                 <kendo-radialgauge-pointers>
                         <kendo-radialgauge-pointer *ngFor="let pointer of pointers2"
@@ -34,10 +33,11 @@
                 </kendo-radialgauge-scale>
         </kendo-radialgauge>
         Salon: {{temp2}} °C
+    </td>
+    </tr>
+    <tr>
+            <td>
 
-        <br>
-        <br>
-        <br>
         <kendo-radialgauge>
                 <kendo-radialgauge-pointers>
                         <kendo-radialgauge-pointer *ngFor="let pointer of pointers3"
@@ -52,45 +52,52 @@
                 </kendo-radialgauge-scale>
         </kendo-radialgauge>
         Buiten: {{temp3}} °C
-    <br>
+    </td>
+    <td>
+            <table style="margin: 0px auto; ">
+                    <tr>
+                        <td>Hout</td>
+                        <td>
+                            <kendo-numerictextbox [(ngModel)]="T1_H_Min"
+                            [autoCorrect]="autoCorrect"
+                            [min]="0"
+                            [max]="24"
+                            (valueChange)="changeTemp1_H_min()"></kendo-numerictextbox>
+                        </td>
+                        <td>
+                            <kendo-numerictextbox [(ngModel)]="T1_H_Max"
+                            [autoCorrect]="autoCorrect"
+                            [min]="0"
+                            [max]="24"
+                            (valueChange)="changeTemp1_H_max()"></kendo-numerictextbox>
+                            </td>
+                        
+                    </tr>
+                    <tr>
+                            <td>Mazout</td>
+                            <td>
+                                <kendo-numerictextbox [(ngModel)]="T1_M_Min"
+                                [autoCorrect]="autoCorrect"
+                                [min]="0"
+                                [max]="24"
+                                (valueChange)="changeTemp1_M_min()"></kendo-numerictextbox>
+                            </td>
+                            <td>
+                                <kendo-numerictextbox [(ngModel)]="T1_M_Max"
+                                [autoCorrect]="autoCorrect"
+                                [min]="0"
+                                [max]="24"
+                                (valueChange)="changeTemp1_M_max()"></kendo-numerictextbox>
+                                </td>
+                            
+                        </tr>
+                </table>   
 
-    <table style="margin: 0px auto; ">
-        <tr>
-            <td>Hout</td>
-            <td>
-                <kendo-numerictextbox [(ngModel)]="T1_H_Max"
-                [autoCorrect]="autoCorrect"
-                [min]="0"
-                [max]="24"
-                (valueChange)="changeTemp1_H_max()"></kendo-numerictextbox>
-            </td>
-            <td>
-                <kendo-numerictextbox [(ngModel)]="T1_H_Min"
-                [autoCorrect]="autoCorrect"
-                [min]="0"
-                [max]="24"
-                (valueChange)="changeTemp1_H_min()"></kendo-numerictextbox>
-                </td>
-            
-        </tr>
-        <tr>
-                <td>Mazoutt</td>
-                <td>
-                    <kendo-numerictextbox [(ngModel)]="T1_M_Max"
-                    [autoCorrect]="autoCorrect"
-                    [min]="0"
-                    [max]="24"
-                    (valueChange)="changeTemp1_M_max()"></kendo-numerictextbox>
-                </td>
-                <td>
-                    <kendo-numerictextbox [(ngModel)]="T1_M_Min"
-                    [autoCorrect]="autoCorrect"
-                    [min]="0"
-                    [max]="24"
-                    (valueChange)="changeTemp1_M_min()"></kendo-numerictextbox>
-                    </td>
-                
-            </tr>
-    </table>    
 
-</div>
+
+    </td>
+</tr>
+
+</table>
+     
+

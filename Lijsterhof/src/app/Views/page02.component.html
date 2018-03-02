@@ -10,7 +10,7 @@
             <td>{{doubleSwitchComponent.componentName}}</td>
             <td>
                 <kendo-switch [(ngModel)]="doubleSwitchComponent.checked1"
-                              [disabled]="doubleSwitchComponent.disabled1"
+                              [disabled]="doubleSwitchComponent.disabled1" 
                               (valueChange)="doubleSwitchComponent.switch1()">
                 </kendo-switch>
             </td>
@@ -36,18 +36,85 @@
         </tr>
      </table>
 
-     <div style="overflow: hidden;height : 100%" >
+
+
+   <table style="margin: 0px auto; "><tr><td style="width: 60%" >
      <kendo-chart style="overflow: hidden; height : 100%">
+            <kendo-chart-value-axis>
+                    <kendo-chart-value-axis-item [title]="{ text: 'Water temp' }"
+                                                 [min]="35" [max]="70">
+                    </kendo-chart-value-axis-item>
+                </kendo-chart-value-axis>
+
+                <kendo-chart-category-axis>
+                        <kendo-chart-category-axis-item [title]="{ text: 'Buiten temp' }"[categories]="stookLijnen[0].getCategories()">
+                        </kendo-chart-category-axis-item>
+                    </kendo-chart-category-axis>
+
+
             <kendo-chart-legend position="bottom" orientation="horizontal" ></kendo-chart-legend>
             <kendo-chart-series>
                 <kendo-chart-series-item *ngFor="let serie of stookLijnen"
-               type="line"  [data]="serie.getData()" [name]="serie.name">
+               type="line"  [data]="serie.getData()" >
                 </kendo-chart-series-item>
             </kendo-chart-series>
         </kendo-chart>
-    <!--  <div *ngFor="let item of tempGraph">
-        <input type="checkbox" [(ngModel)]="item.visible">{{item.name}}<br>
-    </div>--> 
-    </div>
+        </td>
+        <td>
+
+
+        <table style="margin: 0px auto; ">
+                <tr>
+                    
+                    <th>Buitentemp</th>
+                    <th>Watertemp</th>
+                </tr>
+      
+      
+                    <tr *ngFor="let serie of stookLijnen">
+                        
+                  
+                            <td>
+                            <kendo-numerictextbox [(ngModel)]="serie.min.x"
+                                                  [autoCorrect]="autoCorrect"
+                                                  (valueChange)="changeSettingX1()"></kendo-numerictextbox>
+                                                </td>
+                            <td>
+                            <kendo-numerictextbox [(ngModel)]="serie.min.y"
+                            [autoCorrect]="autoCorrect"
+                            (valueChange)="changeSettingY1()"></kendo-numerictextbox>
+                        </td>
+     
+                        <tr *ngFor="let serie of stookLijnen">
+                   
+                            <td>
+                         <kendo-numerictextbox [(ngModel)]="serie.max.x"
+                                               [autoCorrect]="autoCorrect"
+                                               (valueChange)="changeSettingX2()"></kendo-numerictextbox>
+                                             </td>
+                                         <td>
+                         <kendo-numerictextbox [(ngModel)]="serie.max.y"
+                         [autoCorrect]="autoCorrect"
+                         (valueChange)="changeSettingY2()"></kendo-numerictextbox>
+                     </td>
+
+
+                    </tr>
+                    <!-- <tr><br></tr>
+                    <tr *ngFor="let serie of stookLijnen">
+                        <td colspan="2">
+                                Buffer marge: <kendo-numerictextbox [(ngModel)]="serie.min.x"
+                                [autoCorrect]="autoCorrect"></kendo-numerictextbox>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let serie of stookLijnen">
+                            <td colspan="2">
+                                    Sanitair water: <kendo-numerictextbox [(ngModel)]="serie.min.x"
+                                    [autoCorrect]="autoCorrect"></kendo-numerictextbox>
+                            </td>
+                        </tr> -->
+                    </table>
+                    </td></tr>
+    </table>
 
 </div>

@@ -6,7 +6,7 @@ import "rxjs/add/observable/interval";
 import "rxjs/observable/IntervalObservable";
 import 'rxjs/add/observable/of';
 import { Injectable } from '@angular/core';
-import { Temp1, Temp2, Temp3, TempBuffer, TempBoilerBS, TempBoilerT } from '.././url-library';
+import { Temp1, Temp2, Temp3, TempBuffer, TempBoilerBS, TempBoilerT, Setup1, Setup2 } from '.././url-library';
 import { Counter_BS_H, Counter_BS_M, Counter_BS_Tot } from '../url-library';
 import { Counter_T_H, Counter_T_M, Counter_T_Tot } from '../url-library';
 import { DayCounter_BS_H, DayCounter_BS_M, DayCounter_BS_Tot } from '../url-library';
@@ -55,6 +55,19 @@ export class Temp3Label extends LabelComponent {
     componentName = "Temperatuur 3";
     constructor(private __cvService: CVService, private urlClass: Temp3) { super(__cvService, urlClass); }
 }
+
+@Injectable()
+export class WaterSettingLabel extends LabelComponent {
+    componentName = "Water temperatuur setting";
+    constructor(private __cvService: CVService, private urlClass: Setup1) { super(__cvService, urlClass); }
+}
+
+@Injectable()
+export class BufferSettingLabel extends LabelComponent {
+    componentName = "Buffer temperatuur setting";
+    constructor(private __cvService: CVService, private urlClass: Setup2) { super(__cvService, urlClass); }
+}
+
 @Injectable()
 export class TempBufferLabel extends LabelComponent {
     componentName = "Temperatuur Buffer";

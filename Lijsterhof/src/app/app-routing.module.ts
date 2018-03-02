@@ -17,7 +17,9 @@ import { Page13Component }      from './Views/page13.component';
 import { Page14Component }      from './Views/page14.component';
 import { Page13bComponent }      from './Views/page13b.component';
 import { Page14bComponent }      from './Views/page14b.component';
+import { Page14cComponent }      from './Views/page14c.component';
 import { Page15Component }      from './Views/page15.component';
+import { Page15bComponent }      from './Views/page15b.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -38,7 +40,9 @@ const routes: Routes = [
   { path: 'page14', component: Page14Component },
   { path: 'page13b', component: Page13bComponent },
   { path: 'page14b', component: Page14bComponent },
+  { path: 'page14c', component: Page14cComponent },
   { path: 'page15', component: Page15Component },
+  { path: 'page15b', component: Page15bComponent },
 ];
 
 

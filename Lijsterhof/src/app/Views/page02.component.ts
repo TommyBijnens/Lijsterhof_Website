@@ -11,6 +11,8 @@ import { NumberBoxComponent, Setup1Box, Setup2Box } from '.././UIComponents/Numb
 import { DoubleSwitchComponent, SetupBS_CV, SetupBS_WW, SetupT_CV, SetupT_WW } from '.././UIComponents/DoubleSwitchComponent';
 import { Stooklijn } from '../stooklijn';
 
+import { RoomTempService } from '../roomTemp.service';
+
 @Component({
   selector: 'page02',
   templateUrl: './page02.component.html',
@@ -30,6 +32,9 @@ export class Page02Component implements OnInit {
 
     public stookLijnen: Stooklijn[];
 
+
+    
+
     constructor(private cvService: CVService,
         private setup1: Setup1,
 
@@ -39,17 +44,28 @@ export class Page02Component implements OnInit {
         private setupT_WW: SetupT_WW,
 
         private setup1Box: Setup1Box,
-        private setup2Box: Setup2Box    )
+        private setup2Box: Setup2Box ,
+        private roomTempService: RoomTempService   )
 
     {
         this.switchTable = new Array<DoubleSwitchComponent>();
         this.numberTable = new Array<NumberBoxComponent>();
         this.stookLijnen = new Array<Stooklijn>()
         this.stookLijnen.push(new Stooklijn());
+
+ 
+        this.roomTempService.getWaterSettingX1().subscribe(result => this.stookLijnen[0].min.x = result);
+        this.roomTempService.getWaterSettingY1().subscribe(result => this.stookLijnen[0].min.y = result);
+        this.roomTempService.getWaterSettingX2().subscribe(result => this.stookLijnen[0].max.x = result);
+        this.roomTempService.getWaterSettingY2().subscribe(result => this.stookLijnen[0].max.y = result); 
+
     }
 
 
- 
+    changeSettingX1(){this.roomTempService.setWaterSettingX1(this.stookLijnen[0].min.x);}
+    changeSettingY1(){this.roomTempService.setWaterSettingY1(this.stookLijnen[0].min.y);}
+    changeSettingX2(){this.roomTempService.setWaterSettingX2(this.stookLijnen[0].max.x);}
+    changeSettingY2(){this.roomTempService.setWaterSettingY2(this.stookLijnen[0].max.y);}
 
 
     getCV(): void {
@@ -59,8 +75,8 @@ export class Page02Component implements OnInit {
         this.switchTable.push(this.setupT_CV);
         this.switchTable.push(this.setupT_WW);
 
-        this.numberTable.push(this.setup1Box);
-        this.numberTable.push(this.setup2Box);
+     //   this.numberTable.push(this.setup1Box);
+     //   this.numberTable.push(this.setup2Box);
     }
     
     ngOnInit(): void {

@@ -16,6 +16,7 @@ export class DoubleSwitchComponent {
     disabled1: boolean = true;
     checked2: boolean = false;
     disabled2: boolean = true;
+    componentEnabled: boolean = true;
     componentService1: Observable<string>;
     componentService2: Observable<string>;
     componentPostService1: Observable<string>;
@@ -39,9 +40,9 @@ export class DoubleSwitchComponent {
             .subscribe(
             cv => {
                 this.checked1 = (cv[0] == "1");
-                this.disabled1 = false
+                if (this.componentEnabled) this.disabled1 = false
                 this.checked2 = (cv[1] == "1");
-                this.disabled2 = false
+                if (this.componentEnabled) this.disabled2 = false
             },
             error => this.errorMessage = <any>error);
     }
@@ -87,23 +88,27 @@ export class DoubleSwitchComponent {
 @Injectable()
 export class SetupBS_CV extends DoubleSwitchComponent {
     componentName = "Bruno & Sandy - Verwarming";
+    componentEnabled = false;
     constructor(private __cvService: CVService, private urlClass1: BS_CV_H, private urlClass2: BS_CV_M) { super(__cvService, urlClass1, urlClass2); }
 }
 
 @Injectable()
 export class SetupBS_WW extends DoubleSwitchComponent {
     componentName = "Bruno & Sandy - Warm water";
+    componentEnabled = true;
     constructor(private __cvService: CVService, private urlClass1: BS_WW_H, private urlClass2: BS_WW_M) { super(__cvService, urlClass1, urlClass2); }
 }
 
 @Injectable()
 export class SetupT_CV extends DoubleSwitchComponent {
     componentName = "Tommy - Verwarming";
+    componentEnabled = false;
     constructor(private __cvService: CVService, private urlClass1: T_CV_H, private urlClass2: T_CV_M) { super(__cvService, urlClass1, urlClass2); }
 }
 
 @Injectable()
 export class SetupT_WW extends DoubleSwitchComponent {
     componentName = "Tommy - Warm water";
+    componentEnabled = true;
     constructor(private __cvService: CVService, private urlClass1: T_WW_H, private urlClass2: T_WW_M) { super(__cvService, urlClass1, urlClass2); }
 }

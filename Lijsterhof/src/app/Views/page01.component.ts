@@ -3,13 +3,13 @@ import { Component, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { CVService } from '../cv.service';
 import { UIComponents as UI } from '../UIComponents';
-import { LabelComponent, Temp1Label, Temp2Label, Temp3Label, TempBufferLabel, TempBoilerBSLabel, TempBoilerTLabel} from '.././UIComponents/LabelComponent';
+import { LabelComponent, Temp1Label, Temp2Label, Temp3Label,TempBufferLabel, TempBoilerBSLabel, TempBoilerTLabel, WaterSettingLabel, BufferSettingLabel} from '.././UIComponents/LabelComponent';
 import { PictureComponent, Pump1Picture, Pump2Picture, Pump3Picture, Pump4Picture, PumpMainPicture} from '.././UIComponents/PictureComponent';
 import { MultiLabelComponent, WoodRegime, OilRegime} from '.././UIComponents/MultiLabelComponent';
 
 
 
-import { Temp1, Temp2, Temp3, TempBuffer, TempBoilerBS, TempBoilerT } from '../url-library';
+import { Temp1, Temp2, Temp3, TempBuffer, TempBoilerBS, TempBoilerT, Setup1, Setup2 } from '../url-library';
 import { Pump1, Pump2, Pump3, Pump4, PumpMain } from '../url-library';
 import { OilSelected, OilHeating, WoodSelected, WoodHeating } from '../url-library';
 
@@ -19,9 +19,9 @@ import { OilSelected, OilHeating, WoodSelected, WoodHeating } from '../url-libra
     selector: 'page01',
     templateUrl: './page01.component.html',
     providers: [CVService,
-        Temp1, Temp2, Temp3, TempBuffer, TempBoilerBS, TempBoilerT,
+        Temp1, Temp2, Temp3, Setup1, Setup2, TempBuffer, TempBoilerBS, TempBoilerT,
         Pump1, Pump2, Pump3, Pump4, PumpMain, OilSelected, OilHeating, WoodSelected, WoodHeating,
-        Temp1Label, Temp2Label, Temp3Label, TempBufferLabel, TempBoilerBSLabel, TempBoilerTLabel,
+        Temp1Label, Temp2Label, Temp3Label, TempBufferLabel, WaterSettingLabel, BufferSettingLabel, TempBoilerBSLabel, TempBoilerTLabel,
         Pump1Picture, Pump2Picture, Pump3Picture, Pump4Picture, PumpMainPicture, WoodSelected, WoodHeating, OilSelected, OilHeating, WoodRegime, OilRegime
     ]
 })
@@ -42,6 +42,9 @@ export class Page01Component implements OnInit {
         private tempBufferLabel: TempBufferLabel,
         private tempBoilerBSLabel: TempBoilerBSLabel,
         private tempBoilerTLabel: TempBoilerTLabel,
+
+        private setup1Label: WaterSettingLabel,
+        private setup2Label: BufferSettingLabel,
 
         private pump1Picture: Pump1Picture,
         private pump2Picture: Pump2Picture,
@@ -66,6 +69,9 @@ export class Page01Component implements OnInit {
         this.tempTable.push(this.tempBufferLabel);
         this.tempTable.push(this.tempBoilerBSLabel);
         this.tempTable.push(this.tempBoilerTLabel);
+
+        this.tempTable.push(this.setup1Label);
+        this.tempTable.push(this.setup2Label);
 
         this.pumpTable.push(this.pump1Picture);
         this.pumpTable.push(this.pump2Picture);

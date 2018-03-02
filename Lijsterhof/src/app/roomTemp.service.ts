@@ -57,10 +57,33 @@ export class RoomTempService {
     public getTemp1_M_Max_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T1_M_MAX_SETTING);}
     public getTemp1_M_Min_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T1_M_MIN_SETTING);}
 
+    public getTemp2_H_Max_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T2_H_MAX_SETTING);}
+    public getTemp2_H_Min_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T2_H_MIN_SETTING);}
+    public getTemp2_M_Max_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T2_M_MAX_SETTING);}
+    public getTemp2_M_Min_Setting() { return this.getSetting(AppSettings.DATABASE_GET_T2_M_MIN_SETTING);}
+
+
     public setTemp1_H_Max_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T1_H_MAX_SETTING, value)}
     public setTemp1_H_Min_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T1_H_MIN_SETTING, value)}
     public setTemp1_M_Max_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T1_M_MAX_SETTING, value)}
     public setTemp1_M_Min_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T1_M_MIN_SETTING, value)}
+
+    public setTemp2_H_Max_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T2_H_MAX_SETTING, value)}
+    public setTemp2_H_Min_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T2_H_MIN_SETTING, value)}
+    public setTemp2_M_Max_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T2_M_MAX_SETTING, value)}
+    public setTemp2_M_Min_Setting(value: number){this.changeSetting(AppSettings.DATABASE_SET_T2_M_MIN_SETTING, value)}
+
+
+
+    public getWaterSettingX1() { return this.getSetting(AppSettings.DATABASE_GET_WATERSETTINGX1);}
+    public getWaterSettingY1() { return this.getSetting(AppSettings.DATABASE_GET_WATERSETTINGY1);}
+    public getWaterSettingX2() { return this.getSetting(AppSettings.DATABASE_GET_WATERSETTINGX2);}
+    public getWaterSettingY2() { return this.getSetting(AppSettings.DATABASE_GET_WATERSETTINGY2);}
+
+    public setWaterSettingX1(value: number){this.changeSetting(AppSettings.DATABASE_SET_WATERSETTINGX1, value)}
+    public setWaterSettingY1(value: number){this.changeSetting(AppSettings.DATABASE_SET_WATERSETTINGY1, value)}
+    public setWaterSettingX2(value: number){this.changeSetting(AppSettings.DATABASE_SET_WATERSETTINGX2, value)}
+    public setWaterSettingY2(value: number){this.changeSetting(AppSettings.DATABASE_SET_WATERSETTINGY2, value)}
 
 
     private changeSetting(Url: string, value: number): void

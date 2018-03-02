@@ -19,7 +19,8 @@ export class AppComponent {
       {"title":"Info","link":"/page01"},
       {"title":"Instellingen","link":"/page02"},
       {"title":"Verbruik","link":"/page03"},
-      {"title":"Temperaturen","link":"/page15"},
+      {"title":"Tommy","link":"/page15"},
+      {"title":"Bruno & Sandy","link":"/page15b"},
      ]
     },
     {"title":"CV grafieken","link":"#",
@@ -45,6 +46,7 @@ export class AppComponent {
                 {"title":"Oprit","link":"/page13b"},
                 {"title":"Carport Live","link":"/page14"},
                 {"title":"Carport","link":"/page14b"},
+                {"title":"Living","link":"/page14c"},
                ]
     },
 ];

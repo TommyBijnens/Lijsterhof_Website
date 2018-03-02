@@ -1,0 +1,88 @@
+
+   
+        <table style="margin: 0px auto; width:100%; height:100% ">
+     <tr>
+
+    <td style="width:50% "> 
+        <kendo-radialgauge>
+                <kendo-radialgauge-pointers>
+                        <kendo-radialgauge-pointer *ngFor="let pointer of pointers2"
+                            [value]="pointer.value" [color]="pointer.color">
+                        </kendo-radialgauge-pointer>
+                    </kendo-radialgauge-pointers>
+                <kendo-radialgauge-scale [minorUnit]=".5" [majorUnit]="5" [min]="10" [max]="25">
+                        <kendo-radialgauge-scale-ranges>
+                            <!--    <kendo-radialgauge-scale-range [from]="15" [to]="20" color="#33cc33">
+                                </kendo-radialgauge-scale-range>-->
+                        </kendo-radialgauge-scale-ranges>
+                </kendo-radialgauge-scale>
+        </kendo-radialgauge>
+        Eetplaats: {{temp2}} °C
+    </td>
+    </tr>
+    <tr>
+            <td>
+
+        <kendo-radialgauge>
+                <kendo-radialgauge-pointers>
+                        <kendo-radialgauge-pointer *ngFor="let pointer of pointers3"
+                            [value]="pointer.value" [color]="pointer.color">
+                        </kendo-radialgauge-pointer>
+                    </kendo-radialgauge-pointers>
+                <kendo-radialgauge-scale [minorUnit]=".5" [majorUnit]="5" [min]="-5" [max]="25">
+                        <kendo-radialgauge-scale-ranges>
+                            <!--    <kendo-radialgauge-scale-range [from]="15" [to]="20" color="#33cc33">
+                                </kendo-radialgauge-scale-range>-->
+                        </kendo-radialgauge-scale-ranges>
+                </kendo-radialgauge-scale>
+        </kendo-radialgauge>
+        Buiten: {{temp3}} °C
+    </td>
+    <td>
+            <table style="margin: 0px auto; ">
+                    <tr>
+                        <td>Hout</td>
+                        <td>
+                            <kendo-numerictextbox [(ngModel)]="T1_H_Min"
+                            [autoCorrect]="autoCorrect"
+                            [min]="0"
+                            [max]="24"
+                            (valueChange)="changeTemp1_H_min()"></kendo-numerictextbox>
+                        </td>
+                        <td>
+                            <kendo-numerictextbox [(ngModel)]="T1_H_Max"
+                            [autoCorrect]="autoCorrect"
+                            [min]="0"
+                            [max]="24"
+                            (valueChange)="changeTemp1_H_max()"></kendo-numerictextbox>
+                            </td>
+                        
+                    </tr>
+                    <tr>
+                            <td>Mazout</td>
+                            <td>
+                                <kendo-numerictextbox [(ngModel)]="T1_M_Min"
+                                [autoCorrect]="autoCorrect"
+                                [min]="0"
+                                [max]="24"
+                                (valueChange)="changeTemp1_M_min()"></kendo-numerictextbox>
+                            </td>
+                            <td>
+                                <kendo-numerictextbox [(ngModel)]="T1_M_Max"
+                                [autoCorrect]="autoCorrect"
+                                [min]="0"
+                                [max]="24"
+                                (valueChange)="changeTemp1_M_max()"></kendo-numerictextbox>
+                                </td>
+                            
+                        </tr>
+                </table>   
+
+
+
+    </td>
+</tr>
+
+</table>
+     
+

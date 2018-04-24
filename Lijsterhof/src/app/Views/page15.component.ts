@@ -2,13 +2,21 @@ import { Component, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { RoomTempService } from '../roomTemp.service';
 import { HttpModule } from '@angular/http';
 
+import { ExportParameter } from '../exportparameter';
+import { ParameterDisplayComponent} from '../parameter-display/parameter-display.component';
+import { ExportParameterService } from '../export-parameter.service';
+
 @Component({
     selector: 'page15',
     templateUrl: './page15.component.html',
-    providers: [HttpModule]
+    providers: [ExportParameterService]
   })
 
   export class Page15Component {
+
+    tempList: ExportParameter[];
+    setupList: ExportParameter[];
+
 
     temp1: any = 10;
     temp2: any = 10;
@@ -25,8 +33,27 @@ import { HttpModule } from '@angular/http';
 
     public errorMessage: string;
 
-    constructor(private roomTempService: RoomTempService) 
+    constructor(private roomTempService: RoomTempService, private exportParameterService: ExportParameterService) 
     {
+
+      this.tempList = [
+        ExportParameter.RoomTemp_T1(),
+      ];
+      this.tempList[0].minValue = 10;
+      this.tempList[0].maxValue = 25;
+      this.tempList[0].minorUnit = 0.5;
+      this.tempList[0].majorUnit = 5;
+
+      this.tempList.forEach(xp => xp.link(this.exportParameterService));
+
+      this.setupList = [
+        ExportParameter.Setup_T1_H_min(false),
+        ExportParameter.Setup_T1_H_max(false),
+        ExportParameter.Setup_T1_M_min(false),
+        ExportParameter.Setup_T1_M_max(false),
+      ];
+      this.setupList.forEach(xp => xp.link(this.exportParameterService));
+
       
       //setup Gauges
       this.pointers1 = 

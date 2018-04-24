@@ -45,6 +45,9 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import { GaugesModule } from '@progress/kendo-angular-gauges';
 
 import 'hammerjs';
+import { ParameterDisplayComponent } from './parameter-display/parameter-display.component';
+import { HttpClient } from '@angular/common/http/src/client';
+import { HttpClientModule }    from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -69,6 +72,7 @@ import 'hammerjs';
     Page14cComponent,
     Page15Component,
     Page15bComponent,
+    ParameterDisplayComponent,
 
   ],
   imports: [
@@ -79,7 +83,8 @@ import 'hammerjs';
     ButtonsModule,
     InputsModule,
     ChartsModule, 
-    GaugesModule
+    GaugesModule,
+    HttpClientModule,
   ],
   providers: [ConfigurationService, RoomTempService],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ import { Temp1Log, Temp2Log, Temp3Log, TempBLog } from '../url-library';
 
 
 
+
 @Component({
   selector: 'page04',
   templateUrl: './page04.component.html',

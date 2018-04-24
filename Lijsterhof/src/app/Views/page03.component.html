@@ -1,22 +1,19 @@
 <div>
-    <h3>Bruno & Sandy</h3>
+   
+ <h3>Bruno & Sandy</h3>
+ <ul style="list-style-type: none;" class="tempTable">
+    <li *ngFor="let parameter of BSList">
+           <app-parameter-display [exportParameter]="parameter"></app-parameter-display>
+   
+    </li>
+   </ul>
 
-    <table  style="margin: 0px auto; ">
-        <tr *ngFor="let labelComponent of counterTable1">
-            <td>{{labelComponent.componentName}}</td>
-            <td>{{labelComponent.getValue()}}</td>
-        </tr>
-    </table>
-<br>
-    <h3>Tommy</h3>
-    <table  style="margin: 0px auto; ">
-        <tr *ngFor="let labelComponent of counterTable2">
-            <td>{{labelComponent.componentName}}</td>
-            <td>{{labelComponent.getValue()}}</td>
-        </tr>
-
-
- </table>
-
+   <h3>Tommy</h3>
+   <ul style="list-style-type: none;" class="tempTable">
+    <li *ngFor="let parameter of TList">
+           <app-parameter-display [exportParameter]="parameter"></app-parameter-display>
+   
+    </li>
+   </ul>
 
 </div>

@@ -2,22 +2,27 @@
    
   <h2>Info</h2>
      
-  <ul style="list-style-type: none;" class="tempTable">
-    <li *ngFor="let labelComponent of tempTable">
-          <span class="badge">{{labelComponent.componentName}}: </span> {{labelComponent.getValue()}}&#176;
-      </li>
-      </ul>
-  <ul style="list-style-type: none;" class="tempTable">
-      <li *ngFor="let pictureComponent of pumpTable">
-          <span class="badge">{{pictureComponent.componentName}}: </span><font  color={{pictureComponent.getColor()}}>{{pictureComponent.getText()}}</font> <img src="assets/{{pictureComponent.getPicture()}}" height="15" width="15" />
-      </li>
-  </ul>
 
-  <ul style="list-style-type: none;" class="regimeTable">
-      <li *ngFor="let multiLabelComponent of regimeTable">
-          <span class="badge">{{multiLabelComponent.componentName}}: {{multiLabelComponent.getValue()}}</span> 
-      </li>
-  </ul>
 
+  <ul style="list-style-type: none;" class="tempTable">
+ <li *ngFor="let temperatureParameter of temperatureList">
+        <app-parameter-display [exportParameter]="temperatureParameter"></app-parameter-display>
+
+ </li>
+</ul>
+
+<ul style="list-style-type: none;" class="tempTable">
+    <li *ngFor="let pumpParameter of pumpList">
+           <app-parameter-display [exportParameter]="pumpParameter"></app-parameter-display>
+   
+    </li>
+   </ul>
+
+   <ul style="list-style-type: none;" class="tempTable">
+        <li *ngFor="let regimeParameter of regimeList">
+               <app-parameter-display [exportParameter]="regimeParameter"></app-parameter-display>
+       
+        </li>
+       </ul>
 
 </div>

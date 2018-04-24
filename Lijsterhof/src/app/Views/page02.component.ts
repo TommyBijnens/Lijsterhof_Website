@@ -13,15 +13,26 @@ import { Stooklijn } from '../stooklijn';
 
 import { RoomTempService } from '../roomTemp.service';
 
+import { ExportParameter } from '../exportparameter';
+import { ParameterDisplayComponent} from '../parameter-display/parameter-display.component';
+
+import { ExportParameterService } from '../export-parameter.service';
+
+
 @Component({
   selector: 'page02',
   templateUrl: './page02.component.html',
     providers: [CVService, BS_CV_H, BS_CV_M, BS_WW_H, BS_WW_M, T_CV_H, T_CV_M, T_WW_H, T_WW_M,
         Setup1, Setup2, Setup1Box, Setup2Box,
-        SetupBS_CV, SetupBS_WW, SetupT_CV, SetupT_WW]
+        SetupBS_CV, SetupBS_WW, SetupT_CV, SetupT_WW, 
+        ExportParameterService]
 })
 
 export class Page02Component implements OnInit {
+
+
+    settingList: ExportParameter[];
+    tempSettingList: ExportParameter[];
 
     switchTable: DoubleSwitchComponent[];
     numberTable: NumberBoxComponent[];
@@ -35,7 +46,8 @@ export class Page02Component implements OnInit {
 
     
 
-    constructor(private cvService: CVService,
+    constructor( private exportParameterService: ExportParameterService,
+        private cvService: CVService,
         private setup1: Setup1,
 
         private setupBS_CV: SetupBS_CV,
@@ -53,11 +65,40 @@ export class Page02Component implements OnInit {
         this.stookLijnen = new Array<Stooklijn>()
         this.stookLijnen.push(new Stooklijn());
 
- 
-        this.roomTempService.getWaterSettingX1().subscribe(result => this.stookLijnen[0].min.x = result);
-        this.roomTempService.getWaterSettingY1().subscribe(result => this.stookLijnen[0].min.y = result);
-        this.roomTempService.getWaterSettingX2().subscribe(result => this.stookLijnen[0].max.x = result);
-        this.roomTempService.getWaterSettingY2().subscribe(result => this.stookLijnen[0].max.y = result); 
+        
+        // this.roomTempService.getWaterSettingX1().subscribe(result => this.stookLijnen[0].min.x = result);
+        // this.roomTempService.getWaterSettingY1().subscribe(result => this.stookLijnen[0].min.y = result);
+        // this.roomTempService.getWaterSettingX2().subscribe(result => this.stookLijnen[0].max.x = result);
+        // this.roomTempService.getWaterSettingY2().subscribe(result => this.stookLijnen[0].max.y = result); 
+
+
+        
+
+        this.settingList = [
+            ExportParameter.BS_CV_M(false),
+            ExportParameter.BS_CV_H(false),
+            ExportParameter.BS_WW_M(false),
+            ExportParameter.BS_WW_H(false),
+            ExportParameter.T_CV_M(false),
+            ExportParameter.T_CV_H(false),
+            ExportParameter.T_WW_M(false),
+            ExportParameter.T_WW_H(false),
+            ];
+            this.settingList.forEach(xp => xp.link(this.exportParameterService));
+
+        this.tempSettingList = [
+            ExportParameter.TempWater_X1(false),
+            ExportParameter.TempWater_Y1(false),
+            ExportParameter.TempWater_X2(false),
+            ExportParameter.TempWater_Y2(false),
+            ];
+            this.tempSettingList[0].link(this.exportParameterService, this.stookLijnen[0]);
+            this.tempSettingList[1].link(this.exportParameterService, this.stookLijnen[0]);
+            this.tempSettingList[2].link(this.exportParameterService, this.stookLijnen[0]);
+            this.tempSettingList[3].link(this.exportParameterService, this.stookLijnen[0]);
+            
+
+            
 
     }
 

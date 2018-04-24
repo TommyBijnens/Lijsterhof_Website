@@ -1,0 +1,49 @@
+<span *ngIf="isNone()">
+{{ exportParameter.description }}: {{ exportParameter.Value }}°
+</span>
+<span *ngIf="isSwitch()">
+                {{ exportParameter.description }}:
+        <kendo-switch [(ngModel)]="exportParameter.isTrue" 
+                [disabled]="!exportParameter.canWrite" >
+        </kendo-switch>
+</span>
+<span *ngIf= "isSlider()">
+{{ exportParameter.description }}: {{ exportParameter.Value }}°
+</span>
+<span *ngIf= "isTextBox()">
+{{ exportParameter.description }}: {{ exportParameter.Value }}
+</span>
+<span *ngIf= "isNumericBox()">
+                {{ exportParameter.description }}
+        <kendo-numerictextbox [(ngModel)]="exportParameter.Value"></kendo-numerictextbox>
+</span>
+<span *ngIf= "isGauge()">
+        <td>
+
+                <kendo-radialgauge [pointer]="{ value: exportParameter.Value }">
+                        <kendo-radialgauge-scale [minorUnit]="exportParameter.minorUnit" [majorUnit]="exportParameter.majorUnit" [min]="exportParameter.minValue" [max]="exportParameter.maxValue">
+                                <kendo-radialgauge-scale-ranges>
+                                    <!--    <kendo-radialgauge-scale-range [from]="15" [to]="20" color="#33cc33">
+                                        </kendo-radialgauge-scale-range>-->
+                                </kendo-radialgauge-scale-ranges>
+                        </kendo-radialgauge-scale>
+                </kendo-radialgauge>
+                {{ exportParameter.description }}: {{ exportParameter.Value }}°
+            </td>
+</span>
+<span *ngIf= "isPump()">
+        {{ exportParameter.description }}:
+    <span *ngIf="exportParameter.Value == 0">
+        <font color=blue>Uitgeschakeld</font><img src="../../assets/stop.gif" height="15" width="15">
+    </span>
+    <span *ngIf="exportParameter.Value == 1">
+            <font  color=red>In werking</font><img src="../../assets/rotation.gif" height="15" width="15">
+        </span>
+</span>
+
+<!-- 
+
+        (valueChange)="doubleSwitchComponent.switch1()" -->
+        <!--  numeric box
+                [autoCorrect]="autoCorrect" (valueChange)="changeSettingX2()"
+        -->
